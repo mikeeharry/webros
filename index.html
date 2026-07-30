@@ -68,23 +68,15 @@
             letter-spacing: -0.02em;
             color: #eaf0f8;
         }
-        .logo-icon {
-            width: 44px;
+        .logo img {
             height: 44px;
-            background: #1e2128;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            font-weight: 500;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            color: #8ab4f8;
-            background-image: url('');
-            background-size: 26px;
-            background-position: center;
-            background-repeat: no-repeat;
-            flex-shrink: 0;
+            width: auto;
+            border-radius: 12px;
+            display: block;
+        }
+        .logo-icon {
+            display: none;
+            /* Hidden since we're using img tag */;
         }
         .nav-links {
             display: flex;
@@ -703,10 +695,8 @@
                 justify-content: center;
                 font-size: 1.4rem;
             }
-            .logo-icon {
-                width: 38px;
+            .logo img {
                 height: 38px;
-                background-size: 22px;
             }
             .nav-links {
                 justify-content: center;
@@ -947,9 +937,10 @@
 <body>
     <!-- NAV -->
     <div class="navbar container">
-        <img src="logo.png" alt="Webros Logo" style="height:44px; width:auto; border-radius:12px;" />
-    <span>Webros</span>
-</div>
+        <div class="logo">
+            <img src="logo.png" alt="Webros Logo" />
+            <span>Webros</span>
+        </div>
         <div class="nav-links">
             <a href="#services">Services</a>
             <a href="#reviews">Reviews</a>
