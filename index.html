@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <title>Webros · web solutions</title>
+    <!-- Font & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        /* ── RESET & BASE ── */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            background: #0b0d0f;
+            color: #eef2f5;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+        /* subtle green glow from top */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 600px;
+            background: radial-gradient(ellipse at 50% 0%, rgba(34, 197, 94, 0.10) 0%, rgba(34, 197, 94, 0.02) 60%, transparent 80%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ── NAVBAR ── */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: transparent;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 400;
+            font-size: 1.6rem;
+            letter-spacing: -0.02em;
+            color: #eaf0f8;
+        }
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            background: #1e2128;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: #8ab4f8;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="%238ab4f8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>');
+            background-size: 26px;
+            background-position: center;
+            background-repeat: no-repeat;
+            flex-shrink: 0;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            font-weight: 500;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: #b8c6d4;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: 0.2s;
+            white-space: nowrap;
+        }
+        .nav-links a:hover {
+            color: white;
+        }
+        .btn-outline-light {
+            background: white;
+            color: #0b0d0f !important;
+            padding: 0.6rem 1.6rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 0.3px;
+            border: none;
+            transition: 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+        .btn-outline-light:hover {
+            background: #e0e8f0;
+            transform: scale(1.02);
+        }
+        .btn-primary {
+            background: white;
+            color: #0b0d0f;
+            padding: 0.8rem 2.4rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1rem;
+            border: none;
+            transition: 0.25s;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            text-decoration: none;
+        }
+        .btn-primary:hover {
+            background: #d0dcec;
+            transform: scale(1.02);
+            box-shadow: 0 8px 24px rgba(255, 255, 255, 0.08);
+        }
+        .btn-primary i,
+        .btn-outline-light i {
+            font-size: 0.8rem;
+            transition: 0.2s;
+        }
+        .btn-primary:hover i,
+        .btn-outline-light:hover i {
+            transform: translateX(4px);
+        }
+
+        /* ── SECTIONS ── */
+        section {
+            padding: 8rem 0 !important;
+        }
+        .hero,
+        #services,
+        #process,
+        #calendar,
+        #faq,
+        .cta-section {
+            padding: 8rem 0 !important;
+        }
+        #services {
+            padding: 9rem 0 !important;
+        }
+        #process {
+            padding: 9rem 0 !important;
+        }
+        #calendar {
+            padding: 9rem 0 !important;
+        }
+        #faq {
+            padding: 9rem 0 !important;
+        }
+        .cta-section {
+            padding: 10rem 0 !important;
+        }
+
+        /* ── REVIEWS & STATS – CLOSER TOGETHER ── */
+        #reviews {
+            padding: 8rem 0 3rem 0 !important;
+            /* Reduced bottom padding */
+        }
+        .stats-section {
+            padding: 0 0 8rem 0 !important;
+            /* Reduced top padding */
+        }
+
+        .section-title {
+            font-size: 2.4rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            padding: 5rem 0 6rem !important;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+        }
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.7);
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.03), 0 0 40px rgba(255, 255, 255, 0.02);
+            line-height: 1.8;
+        }
+
+        /* ── BRAND SLIDER ── */
+        .brand-section {
+            padding: 3rem 0 4rem !important;
+        }
+        .brand-sub {
+            text-align: center;
+            font-size: 1.9rem;
+            font-weight: 400;
+            color: #C3D1DF;
+            margin-bottom: 2.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+        .brand-slider-wrap {
+            overflow: hidden;
+            padding: 2.5rem 0;
+            background: transparent;
+            border-radius: 40px;
+            margin: 0.5rem 0;
+        }
+        .brand-track {
+            display: flex;
+            gap: 4.5rem;
+            animation: scrollRight 38s linear infinite;
+            width: max-content;
+            will-change: transform;
+            align-items: center;
+        }
+        .brand-track .brand-logo-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 70px;
+            width: 170px;
+            flex-shrink: 0;
+            filter: grayscale(1) brightness(1.8) contrast(1.2);
+            opacity: 0.7;
+            transition: 0.2s;
+        }
+        .brand-track .brand-logo-wrapper:hover {
+            opacity: 1;
+            filter: grayscale(0) brightness(1) contrast(1);
+        }
+        .brand-track .brand-logo-wrapper img {
+            max-height: 52px;
+            max-width: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            display: block;
+        }
+        .brand-track .brand-logo-wrapper .logo-fallback {
+            color: #8a9eb4;
+            font-size: 1.2rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            white-space: nowrap;
+            text-align: center;
+        }
+        @keyframes scrollRight {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* ── SERVICES ── */
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        .service-card {
+            background: transparent;
+            padding: 2.2rem 1.5rem;
+            border-radius: 24px;
+            border: 1px solid #2a3440;
+            transition: 0.3s;
+            text-align: center;
+        }
+        .service-card:hover {
+            background: rgba(255, 255, 255, 0.02);
+            border-color: #4a5b70;
+            transform: translateY(-6px);
+        }
+        .service-card h3 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 0.6rem;
+            color: #e0ecf8;
+        }
+        .service-card p {
+            color: #9aacbe;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* ── PROCESS ── */
+        .process-container {
+            position: relative;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 3rem 0;
+        }
+        .step-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 12rem;
+        }
+        .step-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 60vh;
+            padding: 3rem 2rem;
+            opacity: 0.1;
+            transform: scale(0.85);
+            transition: opacity 0.9s cubic-bezier(0.23, 1, 0.32, 1), transform 0.9s cubic-bezier(0.23, 1, 0.32, 1);
+            will-change: opacity, transform;
+            border-radius: 32px;
+            border: 1px solid transparent;
+        }
+        .step-item.visible {
+            opacity: 1;
+            transform: scale(1);
+            border-color: #2a3440;
+            background: rgba(255, 255, 255, 0.02);
+            box-shadow: 0 0 60px rgba(255, 255, 255, 0.02);
+        }
+        .step-item p {
+            font-size: 3rem;
+            font-weight: 400;
+            color: #e0ecf8;
+            text-align: center;
+            max-width: 800px;
+            line-height: 1.5;
+            letter-spacing: -0.01em;
+        }
+        .step-item .step-number {
+            display: block;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #4a5b70;
+            margin-bottom: 1rem;
+            letter-spacing: 3px;
+        }
+
+        /* ── REVIEWS ── */
+        .review-slider {
+            overflow: hidden;
+            padding: 1rem 0 2.5rem;
+        }
+        .review-track {
+            display: flex;
+            gap: 2.5rem;
+            animation: scrollLeft 32s linear infinite;
+            width: max-content;
+            will-change: transform;
+        }
+        .review-item {
+            background: transparent;
+            padding: 1.8rem 2rem;
+            border-radius: 24px;
+            min-width: 280px;
+            max-width: 340px;
+            border: 1px solid #3a4655;
+            color: #dce6f0;
+        }
+        .review-item .stars {
+            color: #889eb2;
+            letter-spacing: 2px;
+            margin-bottom: 0.7rem;
+            font-size: 1.1rem;
+        }
+        .review-item p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #c8d8ec;
+        }
+        .review-item .author {
+            margin-top: 1rem;
+            font-weight: 500;
+            color: #b8c8dc;
+            font-size: 0.95rem;
+        }
+        .review-item .role {
+            font-size: 0.8rem;
+            color: #7a8ea4;
+        }
+        @keyframes scrollLeft {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* ── STATS ── */
+        .stat-slider {
+            overflow: hidden;
+            padding: 1rem 0 2rem;
+            /* Reduced padding */
+        }
+        .stat-track {
+            display: flex;
+            gap: 4rem;
+            animation: scrollRight 22s linear infinite;
+            width: max-content;
+        }
+        .stat-item {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #b8c8dc;
+            letter-spacing: 0.5px;
+            opacity: 0.8;
+            white-space: nowrap;
+        }
+        .stat-item small {
+            font-weight: 400;
+            font-size: 1.05rem;
+            color: #6b7e94;
+        }
+
+        /* ── CALENDAR ── */
+        .calendar-section {
+            padding: 8rem 0 !important;
+        }
+        .calendar-wrapper {
+            width: 100%;
+            height: 750px;
+            overflow: scroll;
+            border-radius: 24px;
+            border: 1px solid #2a3440;
+            background: #0b0d0f;
+            margin-top: 1rem;
+        }
+        #my-cal-inline-let-s-see-what-you-need {
+            width: 100%;
+            height: 100%;
+            min-height: 650px;
+            overflow: scroll;
+        }
+
+        /* ── FAQ ── */
+        .faq-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .faq-item {
+            background: transparent;
+            border-radius: 16px;
+            border: 1px solid #3a4655;
+            overflow: hidden;
+        }
+        .faq-question {
+            padding: 1.4rem 1.8rem;
+            font-weight: 500;
+            font-size: 1.05rem;
+            color: #e0ecf8;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: 0.2s;
+            gap: 1rem;
+        }
+        .faq-question:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+        .faq-question i {
+            transition: 0.3s;
+            color: #7a8ea4;
+            font-size: 0.9rem;
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease;
+            padding: 0 1.8rem;
+            color: #b0c2d4;
+        }
+        .faq-answer p {
+            padding-bottom: 1.4rem;
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding: 0.2rem 1.8rem 0.5rem;
+        }
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        /* ── CTA ── */
+        .cta-section {
+            text-align: center;
+            padding: 10rem 0 !important;
+        }
+        .cta-section h2 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            max-width: 900px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.4;
+        }
+        .cta-section h2 br {
+            display: block;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            padding: 3rem 0 2.5rem;
+            border-top: 1px solid #1f2832;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            color: #7a8ea4;
+            gap: 1.5rem;
+        }
+        footer .footer-logo {
+            font-weight: 400;
+            font-size: 1.2rem;
+            color: #cedcea;
+        }
+        footer a {
+            color: #8aa0b8;
+            text-decoration: none;
+            margin: 0 0.8rem;
+            font-size: 0.9rem;
+        }
+        footer a:hover {
+            color: white;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 1.8rem;
+            }
+            section,
+            .hero,
+            #services,
+            #process,
+            #calendar,
+            #faq,
+            .cta-section {
+                padding: 6rem 0 !important;
+            }
+            #services,
+            #process,
+            #calendar,
+            #faq {
+                padding: 7rem 0 !important;
+            }
+            .cta-section {
+                padding: 8rem 0 !important;
+            }
+            #reviews {
+                padding: 6rem 0 2rem 0 !important;
+            }
+            .stats-section {
+                padding: 0 0 6rem 0 !important;
+            }
+            .hero h1 {
+                font-size: 2.6rem;
+            }
+            .section-title {
+                font-size: 2.1rem;
+            }
+            .step-item p {
+                font-size: 2.6rem;
+            }
+            .step-item {
+                min-height: 50vh;
+                padding: 2rem 1.5rem;
+            }
+            .step-wrapper {
+                gap: 8rem;
+            }
+            .brand-sub {
+                font-size: 1.2rem;
+            }
+            .brand-track .brand-logo-wrapper {
+                width: 140px;
+                height: 60px;
+            }
+            .brand-track .brand-logo-wrapper img {
+                max-height: 44px;
+            }
+            .brand-track .brand-logo-wrapper .logo-fallback {
+                font-size: 1.05rem;
+            }
+            .brand-track {
+                gap: 3rem;
+            }
+            .service-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+            .review-item {
+                min-width: 250px;
+                padding: 1.5rem 1.6rem;
+            }
+            .stat-item {
+                font-size: 1.4rem;
+            }
+            .stat-track {
+                gap: 3rem;
+            }
+            .cta-section h2 {
+                font-size: 2.4rem;
+            }
+            .calendar-wrapper {
+                height: 650px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .container {
+                padding: 0 1.2rem;
+            }
+            section,
+            .hero,
+            #services,
+            #process,
+            #calendar,
+            #faq,
+            .cta-section {
+                padding: 4rem 0 !important;
+            }
+            .hero {
+                padding: 2.5rem 0 3.5rem !important;
+            }
+            .cta-section {
+                padding: 5rem 0 !important;
+            }
+            #reviews {
+                padding: 4rem 0 1.5rem 0 !important;
+            }
+            .stats-section {
+                padding: 0 0 4rem 0 !important;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+                padding: 0 0.5rem;
+                line-height: 1.6;
+            }
+            .section-title {
+                font-size: 1.7rem;
+                margin-bottom: 1.8rem;
+            }
+            .navbar {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 1rem;
+                padding: 1.2rem 1.2rem;
+            }
+            .logo {
+                justify-content: center;
+                font-size: 1.4rem;
+            }
+            .logo-icon {
+                width: 38px;
+                height: 38px;
+                background-size: 22px;
+            }
+            .nav-links {
+                justify-content: center;
+                gap: 0.8rem;
+            }
+            .nav-links a {
+                font-size: 0.85rem;
+            }
+            .btn-outline-light {
+                padding: 0.4rem 1.2rem;
+                font-size: 0.8rem;
+            }
+            .brand-section {
+                padding: 2rem 0 2.5rem !important;
+            }
+            .brand-sub {
+                font-size: 1.1rem;
+                margin-bottom: 1.8rem;
+                padding: 0 0.5rem;
+            }
+            .brand-slider-wrap {
+                padding: 1.2rem 0;
+            }
+            .brand-track {
+                gap: 2rem;
+            }
+            .brand-track .brand-logo-wrapper {
+                width: 100px;
+                height: 48px;
+            }
+            .brand-track .brand-logo-wrapper img {
+                max-height: 34px;
+            }
+            .brand-track .brand-logo-wrapper .logo-fallback {
+                font-size: 0.85rem;
+            }
+            .service-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+            }
+            .service-card {
+                padding: 1.4rem 1rem;
+                border-radius: 18px;
+            }
+            .service-card h3 {
+                font-size: 1.05rem;
+            }
+            .service-card p {
+                font-size: 0.85rem;
+            }
+            .process-container {
+                min-height: 60vh;
+                padding: 1.5rem 0;
+            }
+            .step-wrapper {
+                gap: 6rem;
+            }
+            .step-item {
+                min-height: 40vh;
+                padding: 1.5rem 1rem;
+                border-radius: 24px;
+            }
+            .step-item p {
+                font-size: 1.7rem;
+                max-width: 100%;
+            }
+            .step-item .step-number {
+                font-size: 1rem;
+                margin-bottom: 0.6rem;
+            }
+            .review-item {
+                min-width: 220px;
+                max-width: 280px;
+                padding: 1.2rem 1.4rem;
+            }
+            .review-item p {
+                font-size: 0.9rem;
+            }
+            .review-item .author {
+                font-size: 0.85rem;
+            }
+            .review-track {
+                gap: 1.5rem;
+            }
+            .stat-item {
+                font-size: 1.2rem;
+            }
+            .stat-item small {
+                font-size: 0.85rem;
+            }
+            .stat-track {
+                gap: 2rem;
+            }
+            .calendar-section {
+                padding: 4rem 0 !important;
+            }
+            .calendar-wrapper {
+                height: 520px;
+            }
+            #my-cal-inline-let-s-see-what-you-need {
+                min-height: 480px;
+            }
+            .faq-question {
+                padding: 1.1rem 1.3rem;
+                font-size: 0.95rem;
+            }
+            .faq-answer {
+                padding: 0 1.3rem;
+            }
+            .faq-answer p {
+                font-size: 0.9rem;
+                padding-bottom: 1.1rem;
+            }
+            .faq-item.active .faq-answer {
+                padding: 0.2rem 1.3rem 0.5rem;
+            }
+            .cta-section h2 {
+                font-size: 1.9rem;
+                padding: 0 0.5rem;
+            }
+            .btn-primary {
+                padding: 0.6rem 1.8rem;
+                font-size: 0.9rem;
+            }
+            footer {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+                padding: 2rem 0 1.5rem;
+            }
+            footer .footer-logo {
+                font-size: 1.1rem;
+            }
+            footer a {
+                margin: 0 0.5rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            section,
+            .hero,
+            #services,
+            #process,
+            #calendar,
+            #faq,
+            .cta-section {
+                padding: 3rem 0 !important;
+            }
+            .hero {
+                padding: 2rem 0 2.5rem !important;
+            }
+            .cta-section {
+                padding: 3.5rem 0 !important;
+            }
+            #reviews {
+                padding: 3rem 0 1rem 0 !important;
+            }
+            .stats-section {
+                padding: 0 0 3rem 0 !important;
+            }
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            .hero p {
+                font-size: 0.9rem;
+            }
+            .section-title {
+                font-size: 1.4rem;
+            }
+            .brand-sub {
+                font-size: 1rem;
+            }
+            .service-grid {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+            }
+            .step-item p {
+                font-size: 1.4rem;
+            }
+            .step-item {
+                min-height: 35vh;
+                padding: 1.2rem 0.8rem;
+            }
+            .step-wrapper {
+                gap: 4rem;
+            }
+            .brand-track .brand-logo-wrapper {
+                width: 75px;
+                height: 38px;
+            }
+            .brand-track .brand-logo-wrapper img {
+                max-height: 26px;
+            }
+            .brand-track .brand-logo-wrapper .logo-fallback {
+                font-size: 0.7rem;
+            }
+            .brand-track {
+                gap: 1.2rem;
+            }
+            .review-item {
+                min-width: 180px;
+                max-width: 220px;
+                padding: 1rem 1.2rem;
+            }
+            .review-item p {
+                font-size: 0.8rem;
+            }
+            .stat-item {
+                font-size: 1rem;
+            }
+            .stat-item small {
+                font-size: 0.75rem;
+            }
+            .stat-track {
+                gap: 1.2rem;
+            }
+            .calendar-wrapper {
+                height: 420px;
+            }
+            #my-cal-inline-let-s-see-what-you-need {
+                min-height: 380px;
+            }
+            .cta-section h2 {
+                font-size: 1.5rem;
+            }
+            .btn-primary {
+                padding: 0.5rem 1.4rem;
+                font-size: 0.85rem;
+            }
+            .faq-question {
+                font-size: 0.85rem;
+                padding: 0.9rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAV -->
+    <div class="navbar container">
+        <div class="logo">
+            <div class="logo-icon" id="logoPlaceholder"></div>
+            <span>Webros</span>
+        </div>
+        <div class="nav-links">
+            <a href="#services">Services</a>
+            <a href="#reviews">Reviews</a>
+            <a href="#faq">FAQs</a>
+            <a href="#calendar" class="btn-outline-light">GET IN TOUCH <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero container">
+        <h1>We deliver web solutions to small businesses</h1>
+        <p>You ask, we listen, you tell us what you want, and we bring the final solution to your doorstep, ready to help you maximize your earnings</p>
+    </section>
+
+    <!-- BRANDS -->
+    <div class="container brand-section">
+        <p class="brand-sub">We help various types of small businesses</p>
+        <div class="brand-slider-wrap">
+            <div class="brand-track" id="brandTrack">
+                <div class="brand-logo-wrapper"><img src="https://logo.clearbit.com/alairhomes.com" alt="Alair Homes" onerror="this.parentElement.innerHTML='<span class=logo-fallback>Alair Homes</span>'" /></div>
+                <div class="brand-logo-wrapper"><img src="https://logo.clearbit.com/agmrenovations.com" alt="AGM Renovations" onerror="this.parentElement.innerHTML='<span class=logo-fallback>AGM Renovations</span>'" /></div>
+                <div class="brand-logo-wrapper"><img src="https://logo.clearbit.com/binnskitchenandbath.com" alt="Binns Kitchen + Bath" onerror="this.parentElement.innerHTML='<span class=logo-fallback>Binns Kitchen + Bath</span>'" /></div>
+                <div class="brand-logo-wrapper"><img src="https://logo.clearbit.com/menatworkdesignbuild.com" alt="Men at Work" onerror="this.parentElement.innerHTML='<span class=logo-fallback>Men at Work</span>'" /></div>
+                <div class="brand-logo-wrapper"><img src="https://logo.clearbit.com/onehourheat.com" alt="One Hour Heating" onerror="this.parentElement.innerHTML='<span class=logo-fallback>One Hour Heating</span>'" /></div>
+                <div class="brand-logo-wrapper"><img src="https://logo.clearbit.com/aireserv.com" alt="Aire Serv" onerror="this.parentElement.innerHTML='<span class=logo-fallback>Aire Serv</span>'" /></div>
+                <div class="brand-logo-wrapper"><img src="https://logo.clearbit.com/serviceexperts.com" alt="Service Experts" onerror="this.parentElement.innerHTML='<span class=logo-fallback>Service Experts</span>'" /></div>
+                <div class="brand-logo-wrapper"><img src="https://logo.clearbit.com/comfortsystems.com" alt="Comfort Systems" onerror="this.parentElement.innerHTML='<span class=logo-fallback>Comfort Systems</span>'" /></div>
+                <div class="brand-logo-wrapper"><img src="https://logo.clearbit.com/bonedryroofing.com" alt="Bone Dry Roofing" onerror="this.parentElement.innerHTML='<span class=logo-fallback>Bone Dry Roofing</span>'" /></div>
+                <div class="brand-logo-wrapper"><img src="https://logo.clearbit.com/powerhomerm.com" alt="Power Home Remodeling" onerror="this.parentElement.innerHTML='<span class=logo-fallback>Power Home Remodeling</span>'" /></div>
+                <div class="brand-logo-wrapper"><img src="https://logo.clearbit.com/aspencontracting.com" alt="Aspen Contracting" onerror="this.parentElement.innerHTML='<span class=logo-fallback>Aspen Contracting</span>'" /></div>
+                <div class="brand-logo-wrapper"><img src="https://logo.clearbit.com/honestaberoofing.com" alt="Honest Abe Roofing" onerror="this.parentElement.innerHTML='<span class=logo-fallback>Honest Abe Roofing</span>'" /></div>
+                <div class="brand-logo-wrapper"><img src="https://logo.clearbit.com/penfoldsroofing.com" alt="Penfolds Roofing" onerror="this.parentElement.innerHTML='<span class=logo-fallback>Penfolds Roofing</span>'" /></div>
+                <div class="brand-logo-wrapper"><img src="https://logo.clearbit.com/alpineroofing.com" alt="Alpine Roofing" onerror="this.parentElement.innerHTML='<span class=logo-fallback>Alpine Roofing</span>'" /></div>
+                <div class="brand-logo-wrapper"><img src="https://logo.clearbit.com/gitanoroofing.com" alt="Gitano Roofing" onerror="this.parentElement.innerHTML='<span class=logo-fallback>Gitano Roofing</span>'" /></div>
+                <div class="brand-logo-wrapper"><img src="https://logo.clearbit.com/cherryclarkroofing.com" alt="Cherry & Clark Roofing" onerror="this.parentElement.innerHTML='<span class=logo-fallback>Cherry & Clark Roofing</span>'" /></div>
+                <!-- duplicate for seamless -->
+                <div class="brand-logo-wrapper"><img src="https://logo.clearbit.com/alairhomes.com" alt="Alair Homes" onerror="this.parentElement.innerHTML='<span class=logo-fallback>Alair Homes</span>'" /></div>
+                <div class="brand-logo-wrapper"><img src="https://logo.clearbit.com/agmrenovations.com" alt="AGM Renovations" onerror="this.parentElement.innerHTML='<span class=logo-fallback>AGM Renovations</span>'" /></div>
+                <div class="brand-logo-wrapper"><img src="https://logo.clearbit.com/binnskitchenandbath.com" alt="Binns Kitchen + Bath" onerror="this.parentElement.innerHTML='<span class=logo-fallback>Binns Kitchen + Bath</span>'" /></div>
+                <div class="brand-logo-wrapper"><img src="https://logo.clearbit.com/menatworkdesignbuild.com" alt="Men at Work" onerror="this.parentElement.innerHTML='<span class=logo-fallback>Men at Work</span>'" /></div>
+                <div class="brand-logo-wrapper"><img src="https://logo.clearbit.com/onehourheat.com" alt="One Hour Heating" onerror="this.parentElement.innerHTML='<span class=logo-fallback>One Hour Heating</span>'" /></div>
+                <div class="brand-logo-wrapper"><img src="https://logo.clearbit.com/aireserv.com" alt="Aire Serv" onerror="this.parentElement.innerHTML='<span class=logo-fallback>Aire Serv</span>'" /></div>
+                <div class="brand-logo-wrapper"><img src="https://logo.clearbit.com/serviceexperts.com" alt="Service Experts" onerror="this.parentElement.innerHTML='<span class=logo-fallback>Service Experts</span>'" /></div>
+                <div class="brand-logo-wrapper"><img src="https://logo.clearbit.com/comfortsystems.com" alt="Comfort Systems" onerror="this.parentElement.innerHTML='<span class=logo-fallback>Comfort Systems</span>'" /></div>
+                <div class="brand-logo-wrapper"><img src="https://logo.clearbit.com/bonedryroofing.com" alt="Bone Dry Roofing" onerror="this.parentElement.innerHTML='<span class=logo-fallback>Bone Dry Roofing</span>'" /></div>
+                <div class="brand-logo-wrapper"><img src="https://logo.clearbit.com/powerhomerm.com" alt="Power Home Remodeling" onerror="this.parentElement.innerHTML='<span class=logo-fallback>Power Home Remodeling</span>'" /></div>
+                <div class="brand-logo-wrapper"><img src="https://logo.clearbit.com/aspencontracting.com" alt="Aspen Contracting" onerror="this.parentElement.innerHTML='<span class=logo-fallback>Aspen Contracting</span>'" /></div>
+                <div class="brand-logo-wrapper"><img src="https://logo.clearbit.com/honestaberoofing.com" alt="Honest Abe Roofing" onerror="this.parentElement.innerHTML='<span class=logo-fallback>Honest Abe Roofing</span>'" /></div>
+                <div class="brand-logo-wrapper"><img src="https://logo.clearbit.com/penfoldsroofing.com" alt="Penfolds Roofing" onerror="this.parentElement.innerHTML='<span class=logo-fallback>Penfolds Roofing</span>'" /></div>
+                <div class="brand-logo-wrapper"><img src="https://logo.clearbit.com/alpineroofing.com" alt="Alpine Roofing" onerror="this.parentElement.innerHTML='<span class=logo-fallback>Alpine Roofing</span>'" /></div>
+                <div class="brand-logo-wrapper"><img src="https://logo.clearbit.com/gitanoroofing.com" alt="Gitano Roofing" onerror="this.parentElement.innerHTML='<span class=logo-fallback>Gitano Roofing</span>'" /></div>
+                <div class="brand-logo-wrapper"><img src="https://logo.clearbit.com/cherryclarkroofing.com" alt="Cherry & Clark Roofing" onerror="this.parentElement.innerHTML='<span class=logo-fallback>Cherry & Clark Roofing</span>'" /></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SERVICES -->
+    <section id="services" class="container">
+        <h2 class="section-title">What we do, actually</h2>
+        <div class="service-grid">
+            <div class="service-card">
+                <h3>Website development</h3>
+                <p>Custom-built, blazing-fast websites tailored to your brand.</p>
+            </div>
+            <div class="service-card">
+                <h3>Website fixing & refinement</h3>
+                <p>Diagnose, repair, and polish every pixel of your existing site.</p>
+            </div>
+            <div class="service-card">
+                <h3>SEO optimization</h3>
+                <p>On-page & technical SEO to rank higher and attract organic traffic.</p>
+            </div>
+            <div class="service-card">
+                <h3>Google ranking</h3>
+                <p>Data-driven strategies to push your site to the top of search results.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="container" id="process">
+        <h2 class="section-title">Our process is simple</h2>
+        <div class="process-container">
+            <div class="step-wrapper">
+                <div class="step-item" data-step="1">
+                    <p><span class="step-number">Step 1</span>You tell us what you need help with</p>
+                </div>
+                <div class="step-item" data-step="2">
+                    <p><span class="step-number">Step 2</span>We ask you a few questions depending on your problem or request</p>
+                </div>
+                <div class="step-item" data-step="3">
+                    <p><span class="step-number">Step 3</span>We build a solution optimized exactly for your need.</p>
+                </div>
+                <div class="step-item" data-step="4">
+                    <p><span class="step-number">Step 4</span>In case you need any change, we give it extra time to refine, change, or add anything that makes your business run and look good without any worry.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section id="reviews" class="container">
+        <h2 class="section-title">Don't just take our word for it</h2>
+        <div class="review-slider">
+            <div class="review-track" id="reviewTrack">
+                <div class="review-item"><div class="stars">★★★★★</div><p>"Webros rebuilt our entire booking system – seamless and beautiful."</p><div class="author">— Sarah K. <span class="role">Owner, Alair Homes</span></div></div>
+                <div class="review-item"><div class="stars">★★★★★</div><p>"Our rankings skyrocketed within weeks. Incredible team."</p><div class="author">— Mike R. <span class="role">Marketing Dir., AGM Renovations</span></div></div>
+                <div class="review-item"><div class="stars">★★★★★</div><p>"They understood our vision and delivered beyond expectations."</p><div class="author">— Jessica L. <span class="role">CEO, Binns Kitchen + Bath</span></div></div>
+                <div class="review-item"><div class="stars">★★★★★</div><p>"Responsive, creative, and truly professional. Highly recommend."</p><div class="author">— David T. <span class="role">Manager, Men at Work Design Build</span></div></div>
+                <div class="review-item"><div class="stars">★★★★★</div><p>"Website speed and design improved dramatically. Amazing work."</p><div class="author">— Elena P. <span class="role">Partner, One Hour Heating</span></div></div>
+                <div class="review-item"><div class="stars">★★★★★</div><p>"They fixed our broken e-commerce flow. Sales increased 40%."</p><div class="author">— Carlos G. <span class="role">Owner, Aire Serv</span></div></div>
+                <!-- duplicate -->
+                <div class="review-item"><div class="stars">★★★★★</div><p>"Webros rebuilt our entire booking system – seamless and beautiful."</p><div class="author">— Sarah K. <span class="role">Owner, Alair Homes</span></div></div>
+                <div class="review-item"><div class="stars">★★★★★</div><p>"Our rankings skyrocketed within weeks. Incredible team."</p><div class="author">— Mike R. <span class="role">Marketing Dir., AGM Renovations</span></div></div>
+                <div class="review-item"><div class="stars">★★★★★</div><p>"They understood our vision and delivered beyond expectations."</p><div class="author">— Jessica L. <span class="role">CEO, Binns Kitchen + Bath</span></div></div>
+                <div class="review-item"><div class="stars">★★★★★</div><p>"Responsive, creative, and truly professional. Highly recommend."</p><div class="author">— David T. <span class="role">Manager, Men at Work Design Build</span></div></div>
+                <div class="review-item"><div class="stars">★★★★★</div><p>"Website speed and design improved dramatically. Amazing work."</p><div class="author">— Elena P. <span class="role">Partner, One Hour Heating</span></div></div>
+                <div class="review-item"><div class="stars">★★★★★</div><p>"They fixed our broken e-commerce flow. Sales increased 40%."</p><div class="author">— Carlos G. <span class="role">Owner, Aire Serv</span></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="container stats-section">
+        <div class="stat-slider">
+            <div class="stat-track">
+                <div class="stat-item">7 <small>Industries served</small></div>
+                <div class="stat-item">153+ <small>clients assisted</small></div>
+                <div class="stat-item">12+ <small>years of experience</small></div>
+                <div class="stat-item">27+ <small>regions touched</small></div>
+                <div class="stat-item">7 <small>Industries served</small></div>
+                <div class="stat-item">153+ <small>clients assisted</small></div>
+                <div class="stat-item">12+ <small>years of experience</small></div>
+                <div class="stat-item">27+ <small>regions touched</small></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CALENDAR -->
+    <section id="calendar" class="calendar-section container">
+        <h2 class="section-title">Let's see what you need</h2>
+        <div class="calendar-wrapper">
+            <div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline-let-s-see-what-you-need"></div>
+            <script type="text/javascript">
+                (function(C, A, L) {
+                    let p = function(a, ar) { a.q.push(ar); };
+                    let d = C.document;
+                    C.Cal = C.Cal || function() {
+                        let cal = C.Cal;
+                        let ar = arguments;
+                        if (!cal.loaded) {
+                            cal.ns = {};
+                            cal.q = cal.q || [];
+                            d.head.appendChild(d.createElement("script")).src = A;
+                            cal.loaded = true;
+                        }
+                        if (ar[0] === L) {
+                            const api = function() { p(api, arguments); };
+                            const namespace = ar[1];
+                            api.q = api.q || [];
+                            if (typeof namespace === "string") {
+                                cal.ns[namespace] = cal.ns[namespace] || api;
+                                p(cal.ns[namespace], ar);
+                                p(cal, ["initNamespace", namespace]);
+                            } else p(cal, ar);
+                            return;
+                        }
+                        p(cal, ar);
+                    };
+                })(window, "https://app.cal.com/embed/embed.js", "init");
+                Cal("init", "let-s-see-what-you-need", { origin: "https://app.cal.com" });
+                Cal.config = Cal.config || {};
+                Cal.config.forwardQueryParams = true;
+
+                Cal.ns["let-s-see-what-you-need"]("inline", {
+                    elementOrSelector: "#my-cal-inline-let-s-see-what-you-need",
+                    config: { "layout": "month_view", "useSlotsViewOnSmallScreen": "true" },
+                    calLink: "sami-sharaf/let-s-see-what-you-need",
+                });
+
+                Cal.ns["let-s-see-what-you-need"]("ui", { "hideEventTypeDetails": false, "layout": "month_view" });
+            </script>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="container">
+        <h2 class="section-title">FAQs</h2>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">How long does a typical website project take? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer"><p>Depending on complexity, between 1 to 7 days. We prioritize speed without sacrificing quality.</p></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">Do you offer ongoing maintenance and support? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer"><p>Absolutely. While we have a one time website building plan, we also offer monthly maintenance plans, security updates, and performance monitoring.</p></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">Will my website be mobile-friendly and fast? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer"><p>Yes. Your website will be fully responsive for mobile, tablet, and PC and hosted on high-performance servers.</p></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">What makes your SEO strategy different? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer"><p>We target your core customer and audience base. So if they need help, you will seem like the best fit to help them out.</p></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">Can you help me rank on Google Maps? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer"><p>Definitely. Local SEO is part of our core offering, and you get an SEO-optimized website.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="contact" class="cta-section container">
+        <h2>The internet holds +50% of your customer base.<br>We help you reach and uncover them.<br>So what are you waiting for?</h2>
+        <a href="#calendar" class="btn-primary">GET IN TOUCH <i class="fas fa-arrow-right"></i></a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="container">
+        <div><span class="footer-logo">Webros</span> <span style="margin-left:1.2rem; font-size:0.85rem;">© 2026 · web solutions</span></div>
+        <div>
+            <a href="#">Twitter</a> <a href="#">LinkedIn</a> <a href="#">Instagram</a>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ toggle
+        function toggleFaq(el) {
+            const item = el.closest('.faq-item');
+            if (!item) return;
+            const isActive = item.classList.contains('active');
+            document.querySelectorAll('.faq-item').forEach(f => f.classList.remove('active'));
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        }
+
+        // Sequential scrolling for process steps
+        const stepItems = document.querySelectorAll('.step-item');
+
+        function updateVisibleStep() {
+            const windowHeight = window.innerHeight;
+            const scrollY = window.scrollY;
+
+            stepItems.forEach((step) => {
+                const rect = step.getBoundingClientRect();
+                const stepTop = rect.top + scrollY;
+                const stepBottom = stepTop + rect.height;
+
+                const visibleTop = Math.max(scrollY, stepTop);
+                const visibleBottom = Math.min(scrollY + windowHeight, stepBottom);
+                const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+                const totalHeight = rect.height;
+                const visibilityRatio = visibleHeight / totalHeight;
+
+                if (visibilityRatio > 0.2) {
+                    step.classList.add('visible');
+                } else {
+                    step.classList.remove('visible');
+                }
+            });
+        }
+
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    updateVisibleStep();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+
+        window.addEventListener('load', () => {
+            updateVisibleStep();
+        });
+
+        window.addEventListener('resize', () => {
+            updateVisibleStep();
+        });
+
+        // Smooth scroll to calendar for all "GET IN TOUCH" buttons
+        document.querySelectorAll('.btn-primary, .btn-outline-light').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#calendar') {
+                    e.preventDefault();
+                    const calendarSection = document.getElementById('calendar');
+                    if (calendarSection) {
+                        calendarSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
